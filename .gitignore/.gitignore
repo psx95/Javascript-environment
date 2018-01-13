@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+#remove node modules 
+node_modules/
