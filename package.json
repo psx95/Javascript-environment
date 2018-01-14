@@ -2,7 +2,16 @@
   "name": "javascript-development-environment",
   "version": "1.0.0",
   "description": "JavaScript development environment Pluralsight course by Cory House",
-  "scripts": {},
+  "scripts": {
+    "prestart": "babel-node BuildScripts/startMessage.js",
+    "start": "npm-run-all --parallel security-check open-server",
+    "open-server": "babel-node BuildScripts/srcServer.js",
+    "security-check": "nsp check",
+    "localtunnel": "lt --port 3000",
+    "localtunnel-custom-name": "lt --port 3000 --subdomain psx95",
+    "share": "npm-run-all --parallel security-check open-server localtunnel",
+    "share-with-name": "npm-run-all --parallel security-check open-server localtunnel-custom-name"
+  },
   "author": "Pranav Sharma",
   "license": "MIT",
   "dependencies": {
@@ -38,7 +47,7 @@
     "open": "0.0.5",
     "rimraf": "2.5.4",
     "style-loader": "0.13.1",
-    "webpack": "1.13.2",
+    "webpack": "^1.13.2",
     "webpack-dev-middleware": "1.8.4",
     "webpack-hot-middleware": "2.13.0",
     "webpack-md5-hash": "0.0.5"
