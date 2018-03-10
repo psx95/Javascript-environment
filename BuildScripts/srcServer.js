@@ -3,7 +3,7 @@ import path from 'path'; // used to handle the paths in the js application
 import open from 'open'; // used to open site in browser
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
-
+/* eslint-disable no-console */
 const port = 3000; // the port intended to use 
 const app = express(); // instance of express server
 const compiler = webpack(config); // get the instace of the webpack's compiler 

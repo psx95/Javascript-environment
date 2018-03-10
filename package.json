@@ -4,13 +4,17 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node BuildScripts/startMessage.js",
-    "start": "npm-run-all --parallel security-check open-server",
+    "start": "npm-run-all --parallel security-check open-server lint:watch test:watch",
     "open-server": "babel-node BuildScripts/srcServer.js",
+    "lint": "esw webpack.config.* src buildScripts --color",
+    "lint:watch" : "npm run lint -- --watch",
     "security-check": "nsp check",
     "localtunnel": "lt --port 3000",
     "localtunnel-custom-name": "lt --port 3000 --subdomain psx95",
     "share": "npm-run-all --parallel security-check open-server localtunnel",
-    "share-with-name": "npm-run-all --parallel security-check open-server localtunnel-custom-name"
+    "share-with-name": "npm-run-all --parallel security-check open-server localtunnel-custom-name",
+    "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+    "test:watch" : "npm run test -- --watch"
   },
   "author": "Pranav Sharma",
   "license": "MIT",
